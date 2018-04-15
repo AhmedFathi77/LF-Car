@@ -7,8 +7,9 @@
 
 #ifndef TIMERMODULE_H_
 #define TIMERMODULE_H_
-void Timer0_PWM_Init();
-void Timer2_PWM_Init();
+
+
+void Timer1_Overflow_Mode();
 void Timer0_PWM_Mode(unsigned int DutyCycle);
 void Timer2_PWM_Mode(unsigned int DutyCycle);
 
