@@ -6,7 +6,7 @@
  */
 #include <avr/io.h>
 #include <avr/delay.h>
-
+#include "GlobalVars.h"
 
 void Timer0_PWM_Mode(unsigned int DutyCycle){
 	TCNT0  = 0 ;
@@ -24,4 +24,11 @@ void Timer2_PWM_Mode(unsigned int DutyCycle){
 	TCCR2 |= (1<<CS20) | (1<<CS22);   // 1024 Prescaler
 	TCCR2 |= (1<<WGM21) | (1<<WGM20); // Fast PWM
 	TCCR2 |= (1<<COM21); 			  // Reset OCR FAST PWM
+}
+void Timer1_Overflow_Mode(){
+	TCNT1  = 0;
+	TCCR1B |= (1<<FOC0);
+	TCCR1B |= (1<<CS11); //no need for prescaler
+	TIMSK |= (1<<TOIE1);
+	OverFlow_Var = 0;
 }
